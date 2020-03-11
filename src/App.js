@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import LoginPage from './routes/LoginPage/LoginPage'
 import RegistrationPage from './routes/RegistrationPage/RegistrationPage'
 
-import snapshotContext from './context/snapshotContext'
+import SnapshotContext from './context/SnapshotContext'
 
 class App extends React.Component {
   state = {
@@ -87,11 +87,25 @@ class App extends React.Component {
             })         
   }
 
-  handleAddGame() {
+  handleAddGame(userId, game) {
     return(
-      console.log('hi')
-    )
-  }
+      fetch(`http://localhost:8080/api/users/${userId}`), {
+        method: 'POST',
+        body: JSON.stringify(game),
+        headers: {
+          'Content-type': 'application/json'
+        }
+      })
+        .then(res => {
+          if(res.ok) {
+            return Promise.resolve('Added')
+          }
+          return Promise.reject('Error adding game to server')
+        })
+            .then(res => {
+              this.setState({games: game, ...this.state.games})
+            })
+      }
 
   render() {
     return (
