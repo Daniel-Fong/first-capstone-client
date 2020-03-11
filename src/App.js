@@ -49,7 +49,7 @@ class App extends React.Component {
     )
   } 
 
-  deletePlayerById(playerId) {
+  handleDeletePlayerById(playerId) {
     return(
       fetch(`http://localhost:8080/api/players/${playerId}`, {
         method: 'DELETE',
@@ -61,13 +61,37 @@ class App extends React.Component {
           if (res.ok) {
             return Promise.resolve('Deleted')
           }
-          return Promise.reject('Error removing note from server')
+          return Promise.reject('Error removing player from server')
         })
           .then(res => {
             this.setState({players: this.state.notes.filter(player=> player.id !== playerId)})
-          })
-          
+          })         
     )}
+
+  handleDeleteGameById(gameId) {
+    return(
+      fetch(`http://localhost:8080/api/games/${gameId}`), {
+        method: 'DELETE',
+        headers: {
+          'Content-type': 'application/json'
+        }
+      })
+        .then(res => {
+          if (res.ok) {
+            return Promise.resolve('Deleted')
+          }
+          return Promise.reject('Error removing game from server')
+        })
+            .then(res => {
+              this.setState({games: this.state.notes.filter(game=> game.id !== gameId)})
+            })         
+  }
+
+  handleAddGame() {
+    return(
+      console.log('hi')
+    )
+  }
 
   render() {
     return (
