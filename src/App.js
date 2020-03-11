@@ -14,6 +14,8 @@ class App extends React.Component {
     error: null
   };
 
+  // componentDidMount()
+
   fetchGamesByUserId(userId) {
     return(
       fetch(`http://localhost:8080/api/games/${userId}`)
@@ -43,6 +45,26 @@ class App extends React.Component {
         })
     )
   } 
+
+  deletePlayerById(playerId) {
+    return(
+      fetch(`http://localhost:8080/api/players/${playerId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(res => {
+          if (res.ok) {
+            return Promise.resolve('Deleted')
+          }
+          return Promise.reject('Error removing note from server')
+        })
+          .then(res => {
+            this.setState({players: this.state.notes.filter(player=> player.id !== playerId)})
+          })
+          
+    )}
 
   render() {
     return (
