@@ -135,6 +135,11 @@ class App extends React.Component {
               path={'/users/:user_id'}
               component={UserWelcomePage}
             />
+            <Route
+              exact
+              path={'/users/:user_id/:game_id'}
+              component={UserGamePage}
+            />
           </Switch>
         </BrowserRouter>
       </div>
