@@ -4,7 +4,7 @@ class CreateGamePage extends React.Component {
     render() {
         return (
             <div>
-                <form class='create-game-form'>
+                <form className='create-game-form'>
                     <label >Title</label>
                     <input />
                     <label >Game Name</label>
