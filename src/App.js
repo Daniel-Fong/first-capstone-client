@@ -12,6 +12,7 @@ class App extends React.Component {
     user: {},
     games: [],
     players: [],
+    scores: [],
     error: null
   };
 
