@@ -9,12 +9,15 @@ import snapshotContext from './context/snapshotContext'
 
 class App extends React.Component {
   state = {
+    user: {},
     games: [],
     players: [],
     error: null
   };
 
-  // componentDidMount()
+  componentDidMount() {
+    this.fetchGamesByUserId(this.state.user.id).then(games => this.setState({ games }))
+}
 
   fetchGamesByUserId(userId) {
     return(
