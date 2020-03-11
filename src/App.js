@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import LoginPage from './routes/LoginPage/LoginPage'
 import RegistrationPage from './routes/RegistrationPage/RegistrationPage'
 import UserGamePage from './routes/UserGamePage/UserGamePage'
+import CreateGamePage from './routes/CreateGamePage/CreateGamePage'
 
 import SnapshotContext from './context/SnapshotContext'
 import UserWelcomePage from './routes/UserWelcomePage/UserWelcomePage';
@@ -139,6 +140,11 @@ class App extends React.Component {
               exact
               path={'/users/:user_id/:game_id'}
               component={UserGamePage}
+            />
+            <Route
+              exact
+              path={'/users/:user_id/create_game'}
+              component={CreateGamePage}
             />
           </Switch>
         </BrowserRouter>
