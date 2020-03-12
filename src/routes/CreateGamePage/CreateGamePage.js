@@ -5,16 +5,12 @@ class CreateGamePage extends React.Component {
         return (
             <div>
                 <form className='create-game-form'>
-                    <label >Title</label>
-                    <input />
-                    <label >Game Name</label>
-                    <input />
-                    <label>Game Type</label>
-                    <input />
-                    <label >Number of Players</label>
-                    <input />
-                <button>Submit</button>
-            </form>
+                    <label htmlFor='game-name'>Name</label>
+                    <input name='game-name' required/>
+                    <label htmlFor='notes'>Notes</label>
+                    <input name='notes'/>
+                    <button type='submit' className='submit'>Submit</button>
+                </form>
             </div>
         )
     }

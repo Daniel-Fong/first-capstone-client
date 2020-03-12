@@ -1,5 +1,4 @@
 import React from 'react'
-import SignIn from '../../components/SignIn/SignIn'
 import { Link } from 'react-router-dom'
 
 class LoginPage extends React.Component {

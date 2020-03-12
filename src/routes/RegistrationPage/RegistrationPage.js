@@ -1,5 +1,4 @@
 import React from 'react'
-import SignUp from '../../components/SignUp/SignUp'
 import { Link } from 'react-router-dom'
 
 class RegistrationPage extends React.Component {
