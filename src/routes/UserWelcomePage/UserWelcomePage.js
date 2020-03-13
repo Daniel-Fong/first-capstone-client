@@ -1,5 +1,6 @@
 import React from 'react'
 import GamesList from '../../components/GamesList/GamesList'
+import config from '../../config'
 
 class UserWelcomePage extends React.Component {
     state = {
@@ -15,7 +16,7 @@ class UserWelcomePage extends React.Component {
     
     fetchGamesByUserId(userId) {
         return(
-          fetch(`http://localhost:8080/api/games/${userId}`)
+          fetch(`${config.API_ENDPOINT}/games/${userId}`)
             .then(res => {
               if (res.ok) {
                 return res.json();
