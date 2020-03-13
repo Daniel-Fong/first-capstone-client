@@ -42,7 +42,7 @@ export default class LoginForm extends Component {
           <label htmlFor='name' >Username</label>
           <input name='name' required/>
           <label htmlFor='password' >Password</label>
-          <input name='password' required/>
+          <input name='password' type='password' required/>
           <button>Submit</button>
       </form>
     )

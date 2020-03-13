@@ -1,4 +1,5 @@
 import React from 'react'
+import TokenService from '../../services/token-service'
 
 class UserGamePage extends React.Component {
     state = {
