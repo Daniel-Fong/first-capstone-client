@@ -1,27 +1,42 @@
 import React from 'react'
 import GamesList from '../../components/GamesList/GamesList'
 import config from '../../config'
+import TokenService from '../../services/token-service'
 
 class UserWelcomePage extends React.Component {
     state = {
         games: [],
-        userid: null,
         error: null,
     }
 
     componentDidMount() {
-        this.setState({ userid: this.props.match.params.user_id })
-        this.fetchGamesByUserId(this.state.userid)
+       this.fetchGamesByUserId()
+        .then(res => {
+            console.log(res)
+            if(!res.ok)
+                return res.json().then(e => Promise.reject(e))
+            return Promise.all(res.json())
+        })
+        .then((games) => {
+            this.setState({games})
+        })
+        .catch(error => {
+            console.error({error})
+        })
     }
     
-    fetchGamesByUserId(userId) {
+    fetchGamesByUserId() {
         return(
-          fetch(`${config.API_ENDPOINT}/games/${userId}`)
+          fetch(`${config.API_ENDPOINT}/games`, {
+              headers: {
+                  'authorization': `bearer ${TokenService.getAuthToken()}`,
+              },
+          })
             .then(res => {
               if (res.ok) {
                 return res.json();
               }
-              return Promise.reject('Error fetching notes from server');
+              return Promise.reject('Error fetching games from server');
             })
             .catch(err => {
               this.setState({error: err})

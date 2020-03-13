@@ -18,7 +18,7 @@ class LandingPage extends React.Component {
                 <section className='about'>
                     <h2>About</h2>
                     <p>Instructions</p>
-                    <div class='image-placeholder'><p>Image Placeholder</p></div>
+                    <div className='image-placeholder'><p>Image Placeholder</p></div>
                     <p>Some text about games and the app and how you like games and how the app is perfect for you because of that wow what a great fit</p>
                 </section>
             </div>

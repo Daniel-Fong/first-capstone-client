@@ -15,21 +15,6 @@ class App extends React.Component {
     error: null
   };
 
-  fetchPlayersByGameId(gameId) {
-    return(
-      fetch(`http://localhost:8080/api/players/${gameId}`)
-        .then(res => {
-          if (res.ok) {
-            return res.json();
-          }
-          return Promise.reject('Error fetching players from server')
-        })
-        .catch(err => {
-          this.setState({error: err})
-        })
-    )
-  } 
-
   handleDeletePlayerById(playerId) {
     return(
       fetch(`http://localhost:8080/api/players/${playerId}`, {
@@ -110,7 +95,7 @@ class App extends React.Component {
             />
             <Route
               exact
-              path={'/users/:user_id'}
+              path={'/dashboard'}
               component={UserWelcomePage}
             />
             <Route
