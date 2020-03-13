@@ -104,12 +104,12 @@ class App extends React.Component {
             />
             <Route
               exact
-              path={'/users/:user_id/:game_id'}
+              path={'/:game_id'}
               component={UserGamePage}
             />
             <Route
               exact
-              path={'/users/:user_id/create_game'}
+              path={'/create_game'}
               component={CreateGamePage}
             />
           </Switch>

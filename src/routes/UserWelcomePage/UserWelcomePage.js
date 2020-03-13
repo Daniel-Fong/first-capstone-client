@@ -2,10 +2,12 @@ import React from 'react'
 import GamesList from '../../components/GamesList/GamesList'
 import config from '../../config'
 import TokenService from '../../services/token-service'
+import PlayersList from '../../components/PlayersList/PlayersList'
 
 class UserWelcomePage extends React.Component {
     state = {
         games: [],
+        players: [],
         error: null,
     }
 
@@ -17,7 +19,33 @@ class UserWelcomePage extends React.Component {
         .catch(error => {
             console.error({error})
         })
+        this.fetchPlayersByUserId()
+        .then((players) => {
+            this.setState({players})
+        })
+        .catch(error => {
+            console.error({error})
+        })
     }
+
+    fetchPlayersByUserId() {
+        return(
+            fetch(`${config.API_ENDPOINT}/players`, {
+                headers: {
+                    'authorization': `bearer ${TokenService.getAuthToken()}`,
+                },
+            })
+              .then(res => {
+                if (res.ok) {
+                  return res.json();
+                }
+                return Promise.reject('Error fetching players from server');
+              })
+              .catch(err => {
+                this.setState({error: err})
+              })
+            )
+          }
     
     fetchGamesByUserId() {
         return(
@@ -61,6 +89,7 @@ class UserWelcomePage extends React.Component {
                     <input />
                     <div>
                         <GamesList games={this.state.games} userId={this.state.userid} />
+                        <PlayersList players={this.state.players} userId={this.state.userid} />
                     </div>
                 </main>
             </div>

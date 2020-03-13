@@ -1,41 +1,46 @@
 import React from 'react'
 import TokenService from '../../services/token-service'
+import PlayersList from '../../components/PlayersList/PlayersList'
+import config from '../../config'
 
 class UserGamePage extends React.Component {
     state = {
         players: [],
         scores: [],
+        game: null,
         error: null,
     }
 
     componentDidMount() {
-        const players = this.fetchPlayersByGameId(this.props.match.params.game_id)
-
+        this.fetchPlayersByGameId(this.props.match.params.game_id, )
+            .then(players => {
+                this.setState({players: players}) 
+            })
     }
 
-    fetchPlayersByGameId(gameId) {
+    fetchPlayersByGameId(gameid) {
         return(
-          fetch(`http://localhost:8080/api/players/${gameId}`), {
-              headers: {
-                'authorization': `bearer ${TokenService.getAuthToken()}`,
-              }
-          }
-            .then(res => {
-              if (res.ok) {
-                return res.json();
-              }
-              return Promise.reject('Error fetching players from server')
+            fetch(`${config.API_ENDPOINT}/players/${gameid}`, {
+                headers: {
+                  'authorization': `bearer ${TokenService.getAuthToken()}`,
+                }
             })
-            .catch(err => {
-              this.setState({error: err})
-            })
-        )
-      } 
+              .then(res => {
+                if (res.ok) {
+                  return res.json();
+                }
+                return Promise.reject('Error fetching players from server')
+              })
+              .catch(err => {
+                this.setState({error: err})
+              })
+          )
+        } 
 
     render() {
         return(
             <div>
-
+                <PlayersList players={this.state.players} />
             </div>
         )
     }
