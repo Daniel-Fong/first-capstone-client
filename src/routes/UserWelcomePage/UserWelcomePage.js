@@ -11,12 +11,6 @@ class UserWelcomePage extends React.Component {
 
     componentDidMount() {
        this.fetchGamesByUserId()
-        .then(res => {
-            console.log(res)
-            if(!res.ok)
-                return res.json().then(e => Promise.reject(e))
-            return Promise.all(res.json())
-        })
         .then((games) => {
             this.setState({games})
         })

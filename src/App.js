@@ -6,6 +6,7 @@ import LoginPage from './routes/LoginPage/LoginPage'
 import RegistrationPage from './routes/RegistrationPage/RegistrationPage'
 import UserGamePage from './routes/UserGamePage/UserGamePage'
 import CreateGamePage from './routes/CreateGamePage/CreateGamePage'
+import TokenService from './services/token-service'
 
 // import SnapshotContext from './context/SnapshotContext'
 import UserWelcomePage from './routes/UserWelcomePage/UserWelcomePage';
@@ -20,6 +21,7 @@ class App extends React.Component {
       fetch(`http://localhost:8080/api/players/${playerId}`, {
         method: 'DELETE',
         headers: {
+          'authorization': `bearer ${TokenService.getAuthToken()}`,
           'Content-Type': 'application/json'
         }
       })
@@ -39,6 +41,7 @@ class App extends React.Component {
       fetch(`http://localhost:8080/api/games/${gameId}`), {
         method: 'DELETE',
         headers: {
+          'authorization': `bearer ${TokenService.getAuthToken()}`,
           'Content-type': 'application/json'
         }
       })
@@ -59,6 +62,7 @@ class App extends React.Component {
         method: 'POST',
         body: JSON.stringify(game),
         headers: {
+          'authorization': `bearer ${TokenService.getAuthToken()}`,
           'Content-type': 'application/json'
         }
       })

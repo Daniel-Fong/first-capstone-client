@@ -7,9 +7,18 @@ class UserGamePage extends React.Component {
         error: null,
     }
 
+    componentDidMount() {
+        const players = this.fetchPlayersByGameId(this.props.match.params.game_id)
+
+    }
+
     fetchPlayersByGameId(gameId) {
         return(
-          fetch(`http://localhost:8080/api/players/${gameId}`)
+          fetch(`http://localhost:8080/api/players/${gameId}`), {
+              headers: {
+                'authorization': `bearer ${TokenService.getAuthToken()}`,
+              }
+          }
             .then(res => {
               if (res.ok) {
                 return res.json();
