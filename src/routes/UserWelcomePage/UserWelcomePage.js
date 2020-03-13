@@ -1,11 +1,39 @@
 import React from 'react'
+import GamesList from '../../components/GamesList/GamesList'
 
 class UserWelcomePage extends React.Component {
+    state = {
+        games: [],
+        userid: null,
+        error: null,
+    }
+
+    componentDidMount() {
+        this.setState({ userid: this.props.match.params.user_id })
+        this.fetchGamesByUserId(this.state.userid)
+    }
+    
+    fetchGamesByUserId(userId) {
+        return(
+          fetch(`http://localhost:8080/api/games/${userId}`)
+            .then(res => {
+              if (res.ok) {
+                return res.json();
+              }
+              return Promise.reject('Error fetching notes from server');
+            })
+            .catch(err => {
+              this.setState({error: err})
+            })
+          )
+        }
+
     render() {
+        console.log(this.props.match.params)
         return (
-            <div class='user-welcome-div'>
+            <div className='user-welcome-div'>
                 <header>
-                    <ul class='navbar'>
+                    <ul className='navbar'>
                         <li>Home</li>
                         <li>My Games</li>
                         <li>Create New Game</li>
@@ -22,20 +50,9 @@ class UserWelcomePage extends React.Component {
                     </select>
                     <label>Search</label>
                     <input />
-                    <ul>
-                        <li>Game Save Name
-                            <div class='image-placeholder-2'><p>Image Placeholder</p></div>
-                        </li>
-                        <li>Game Save Name
-                            <div class='image-placeholder-2'><p>Image Placeholder</p></div>
-                        </li>
-                        <li>Game Save Name
-                            <div class='image-placeholder-2'><p>Image Placeholder</p></div>
-                        </li>
-                        <li>Game Save Name
-                            <div class='image-placeholder-2'><p>Image Placeholder</p></div>
-                        </li>
-                    </ul>
+                    <div>
+                        <GamesList games={this.state.games} userId={this.state.userid} />
+                    </div>
                 </main>
             </div>
         )

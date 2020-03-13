@@ -7,36 +7,13 @@ import RegistrationPage from './routes/RegistrationPage/RegistrationPage'
 import UserGamePage from './routes/UserGamePage/UserGamePage'
 import CreateGamePage from './routes/CreateGamePage/CreateGamePage'
 
-import SnapshotContext from './context/SnapshotContext'
+// import SnapshotContext from './context/SnapshotContext'
 import UserWelcomePage from './routes/UserWelcomePage/UserWelcomePage';
 
 class App extends React.Component {
   state = {
-    user: {},
-    games: [],
-    players: [],
-    scores: [],
     error: null
   };
-
-  componentDidMount() {
-    this.fetchGamesByUserId(this.state.user.id).then(games => this.setState({ games }))
-}
-
-  fetchGamesByUserId(userId) {
-    return(
-      fetch(`http://localhost:8080/api/games/${userId}`)
-        .then(res => {
-          if (res.ok) {
-            return res.json();
-          }
-          return Promise.reject('Error fetching notes from server');
-        })
-        .catch(err => {
-          this.setState({error: err})
-        })
-      )
-    }
 
   fetchPlayersByGameId(gameId) {
     return(
