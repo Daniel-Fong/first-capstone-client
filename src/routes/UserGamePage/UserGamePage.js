@@ -40,7 +40,7 @@ class UserGamePage extends React.Component {
     render() {
         return(
             <div>
-                <PlayersList players={this.state.players} />
+                <PlayersList players={this.state.players} gameid={this.props.match.params.game_id} />
             </div>
         )
     }
