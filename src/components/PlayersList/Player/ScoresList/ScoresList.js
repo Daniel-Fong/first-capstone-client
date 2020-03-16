@@ -100,7 +100,7 @@ class ScoresList extends React.Component {
                 <input name='score' />
                 <label htmlFor='note'>Note</label>
                 <input name='note' />
-                <button className='add-score-button' type='submit'>Add Score</button>
+                <button className='add-score-button' type='submit'>Add</button>
             </form>
             </div>
         )

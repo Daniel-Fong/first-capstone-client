@@ -1,6 +1,9 @@
 .score-li {
     background-color: blanchedalmond;
-    padding-top: .5em;
-    padding-bottom: .5em;
+    padding-bottom: .2em;
     border: solid 1px black;
+}
+
+.score-li p {
+    margin-top: -.1em;
 }

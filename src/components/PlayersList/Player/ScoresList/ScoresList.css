@@ -7,14 +7,26 @@
 }
 
 .scores-list-ul {
-    border: solid 1px black;
     width: 100%;
 }
 
 .player-li {
-    width: 30%;
+    width: 25%;
 }
 
 .score-li {
-    margin-left: -2.5em;
+    margin-left: -4.2em;
+    margin-right: 1.2em;
+}
+
+.players-ul {
+    margin-left: -2em;
+}
+
+.add-score-form {
+    text-align: left;
+}
+
+.add-score-form input {
+    width: 8em;
 }
