@@ -30,11 +30,18 @@ class UserWelcomePage extends React.Component {
         })
     }
 
-    handleAddGame(game) {
+    handleAddGame(e) {
+        e.preventDefault()
+        const name = e.target.name.value
+        const notes = e.target.notes.value
+        let newGame = JSON.stringify({
+            name: name,
+            notes: notes
+        })
         return(
           fetch(`http://localhost:8080/api/games`), {
             method: 'POST',
-            body: JSON.stringify(game),
+            body: newGame,
             headers: {
               'authorization': `bearer ${TokenService.getAuthToken()}`,
               'Content-type': 'application/json'

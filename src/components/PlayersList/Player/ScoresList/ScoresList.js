@@ -6,6 +6,8 @@ import './ScoresList.css'
 class ScoresList extends React.Component {
     state = {
         scores: [],
+        score: 0,
+        note: '',
     }
     componentDidMount() {
         this.fetchScores()
@@ -85,6 +87,24 @@ class ScoresList extends React.Component {
           )
         } 
 
+    handleScoreChange(e) {
+      const target = e.target;
+      const value = target.value;
+
+      this.setState({
+        score: value
+      })
+    }
+
+    handleNoteChange(e) {
+      const target = e.target;
+      const value = target.value;
+
+      this.setState({
+        note: value
+      })
+    }
+
     render() {
         return(
             <div className='scores-list-div'>
@@ -93,13 +113,22 @@ class ScoresList extends React.Component {
                 {this.state.scores.map(score => <Score key={score.id} handleDeleteScore={this.handleDeleteScore} score={score} />)}
             </ul>
             <form className='add-score-form' onSubmit={(e) => {
-                    this.handleAddScore(e)
+                e.preventDefault()
+                this.handleAddScore(e)
+                this.setState({
+                  score: '',
+                  note: '',
+                })
                 }}>
                 <h2 className='add-score-h2'>Add New Score or Note</h2>
                 <label htmlFor='score'>Score</label>
-                <input name='score' />
+                <input name='score' value={this.state.score} onChange={(e) => {
+                  this.handleScoreChange(e)
+                }}/>
                 <label htmlFor='note'>Note</label>
-                <input name='note' />
+                <input name='note' value={this.state.note} onChange={(e) => {
+                  this.handleNoteChange(e)
+                }}/>
                 <button className='add-score-button' type='submit'>Add</button>
             </form>
             </div>
