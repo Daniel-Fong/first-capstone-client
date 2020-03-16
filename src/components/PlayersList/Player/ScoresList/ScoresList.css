@@ -1,0 +1,20 @@
+.add-score-h2 {
+    font-size: 1.2em;
+}
+
+.add-score-form input {
+    display: block;
+}
+
+.scores-list-ul {
+    border: solid 1px black;
+    width: 100%;
+}
+
+.player-li {
+    width: 30%;
+}
+
+.score-li {
+    margin-left: -2.5em;
+}

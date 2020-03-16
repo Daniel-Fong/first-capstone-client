@@ -1,5 +1,6 @@
 import React from 'react'
 import Player from './Player/Player'
+import './PlayersList.css'
 
 class PlayersList extends React.Component {
     render () {

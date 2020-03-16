@@ -2,6 +2,7 @@ import React from 'react'
 import Score from './Score/Score'
 import config from '../../../../config'
 import TokenService from '../../../../services/token-service'
+import './ScoresList.css'
 class ScoresList extends React.Component {
     state = {
         scores: [],
@@ -26,8 +27,7 @@ class ScoresList extends React.Component {
                 // return res.json()
             })
             .then((score) => {
-              this.setState({ scores: [this.state.scores.filter(score => score.id !== scoreid)]})
-              console.log(this.state.scores)
+              this.setState({ scores: this.state.scores.filter(score => score.id !== scoreid)})
             })
             .catch(error => {
               console.error({ error })
@@ -95,6 +95,7 @@ class ScoresList extends React.Component {
             <form className='add-score-form' onSubmit={(e) => {
                     this.handleAddScore(e)
                 }}>
+                <h2 className='add-score-h2'>Add New Score or Note</h2>
                 <label htmlFor='score'>Score</label>
                 <input name='score' />
                 <label htmlFor='note'>Note</label>
