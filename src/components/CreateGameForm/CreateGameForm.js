@@ -9,7 +9,10 @@ class CreateGamePage extends React.Component {
                     <input name='game-name' required/>
                     <label htmlFor='notes'>Notes</label>
                     <input name='notes'/>
-                    <button type='submit' className='submit'>Submit</button>
+                    <button type='submit' className='submit' onClick={(e => {
+                        e.preventDefault();
+                        this.props.handleAddGame()})}>
+                Submit</button>
                 </form>
             </div>
         )

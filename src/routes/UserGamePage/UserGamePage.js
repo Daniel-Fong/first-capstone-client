@@ -6,7 +6,6 @@ import config from '../../config'
 class UserGamePage extends React.Component {
     state = {
         players: [],
-        scores: [],
         game: null,
         error: null,
     }
@@ -40,7 +39,7 @@ class UserGamePage extends React.Component {
     render() {
         return(
             <div>
-                <PlayersList players={this.state.players} gameid={this.props.match.params.game_id} />
+                <PlayersList render={true} players={this.state.players} gameid={this.props.match.params.game_id} />
             </div>
         )
     }
