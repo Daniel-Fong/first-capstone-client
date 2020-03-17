@@ -30,8 +30,7 @@ class UserWelcomePage extends React.Component {
         })
     }
 
-    handleAddGame(e) {
-        e.preventDefault()
+    handleAddGame = (e) => {
         const name = e.target.name.value
         const notes = e.target.notes.value
         let newGame = JSON.stringify({
@@ -39,28 +38,59 @@ class UserWelcomePage extends React.Component {
             notes: notes
         })
         return(
-          fetch(`http://localhost:8080/api/games`), {
+          fetch(`http://localhost:8080/api/games`, {
             method: 'POST',
-            body: newGame,
             headers: {
               'authorization': `bearer ${TokenService.getAuthToken()}`,
               'Content-type': 'application/json'
             },
+            body: newGame
           })
-            .then(res => {
-              if(res.ok) {
-                return Promise.resolve('Added')
-              }
-              return Promise.reject('Error adding game to server')
-            })
-                .then(game => {
-                  this.setState({games: game, ...this.state.games})
-                })
-          }
+          .then(res => {
+            if (!res.ok)
+              return res.json().then(e => Promise.reject(e))
+            return res.json()
+          })
+          .then(game => {
+            this.setState({games: [...this.state.games, game]})
+          })
+          .catch(error => {
+            console.error({ error })
+          })
+          )}
 
-    handleDeleteGameById(gameId) {
+    handleAddPlayer = (e) => {
+      const name = e.target.name.value
+        const notes = e.target.notes.value
+        let newPlayer = JSON.stringify({
+            name: name,
+            notes: notes
+        })
         return(
-          fetch(`http://localhost:8080/api/games/${gameId}`), {
+          fetch(`http://localhost:8080/api/players`, {
+            method: 'POST',
+            headers: {
+              'authorization': `bearer ${TokenService.getAuthToken()}`,
+              'Content-type': 'application/json'
+            },
+            body: newPlayer
+          })
+          .then(res => {
+            if (!res.ok)
+              return res.json().then(e => Promise.reject(e))
+            return res.json()
+          })
+          .then(player => {
+            this.setState({players: [...this.state.players, player]})
+          })
+          .catch(error => {
+            console.error({ error })
+          })
+        )}
+
+    handleDeleteGameById = (gameId) => {
+        return(
+          fetch(`http://localhost:8080/api/games/${gameId}`, {
             method: 'DELETE',
             headers: {
               'authorization': `bearer ${TokenService.getAuthToken()}`,
@@ -68,17 +98,11 @@ class UserWelcomePage extends React.Component {
             }
           })
             .then(res => {
-              if (res.ok) {
-                return Promise.resolve('Deleted')
-              }
-              return Promise.reject('Error removing game from server')
-            })
-                .then(res => {
-                  this.setState({games: this.state.notes.filter(game=> game.id !== gameId)})
-                })         
-      }
+              this.setState({games: this.state.games.filter(game=> game.id !== gameId)})
+            })         
+        )}
 
-    handleDeletePlayerById(playerId) {
+    handleDeletePlayerById = (playerId) => {
         return(
           fetch(`http://localhost:8080/api/players/${playerId}`, {
             method: 'DELETE',
@@ -87,12 +111,6 @@ class UserWelcomePage extends React.Component {
               'Content-Type': 'application/json'
             }
           })
-            .then(res => {
-              if (res.ok) {
-                return Promise.resolve('Deleted')
-              }
-              return Promise.reject('Error removing player from server')
-            })
               .then(res => {
                 this.setState({players: this.state.notes.filter(player=> player.id !== playerId)})
               })         
@@ -161,8 +179,8 @@ class UserWelcomePage extends React.Component {
                     <label>Search</label>
                     <input />
                     <div>
-                        <GamesList games={this.state.games} userId={this.state.userid} />
-                        <PlayersList render={false} players={this.state.players} userId={this.state.userid} />
+                        <GamesList games={this.state.games} userId={this.state.userid} handleDeleteGame={this.handleDeleteGameById} />
+                        <PlayersList render={false} players={this.state.players} userId={this.state.userid} handleDeletePlayer={this.handleDeletePlayerById} />
                     </div>
                 </main>
             </div>

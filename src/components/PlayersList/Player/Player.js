@@ -14,7 +14,10 @@ class Player extends React.Component {
             <li className='player-li'>
                 <h3>{this.props.player.name}</h3>
                 <p className='player-notes-p'>{this.props.player.notes}</p>
-                <button type='delete' className='delete-player-button'>Delete Player</button>
+                <button type='delete' className='delete-player-button' onClick={(e) => {
+                    e.preventDefault()
+                    this.props.handleDeletePlayer(e)
+                }}>Delete Player</button>
                 {renderScoresList()}
             </li>
         )

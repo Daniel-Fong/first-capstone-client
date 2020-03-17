@@ -6,7 +6,7 @@ import './ScoresList.css'
 class ScoresList extends React.Component {
     state = {
         scores: [],
-        score: 0,
+        score: '',
         note: '',
     }
     componentDidMount() {

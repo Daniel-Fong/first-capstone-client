@@ -9,6 +9,10 @@ class Game extends React.Component {
                 <h3>{this.props.game.name}</h3>
                 <p className='game-notes-p'>{this.props.game.notes}</p>
                 <p className='date-modified-p'>{this.props.game.date_modified}</p>
+                <button className='game-delete-button' type='delete' onClick={(e) => {
+                    e.preventDefault()
+                    this.props.handleDeleteGame(this.props.game.id)
+                }}>Delete Game</button>
             </li>
             </Link>
         )
