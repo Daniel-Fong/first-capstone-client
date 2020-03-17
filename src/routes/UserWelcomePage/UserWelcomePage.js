@@ -5,6 +5,7 @@ import TokenService from '../../services/token-service'
 import PlayersList from '../../components/PlayersList/PlayersList'
 import { Link } from 'react-router-dom'
 import CreateGameForm from '../../components/CreateGameForm/CreateGameForm'
+import CreatePlayerForm from '../../components/CreatePlayerForm/CreatePlayerForm'
 
 class UserWelcomePage extends React.Component {
     state = {
@@ -88,9 +89,23 @@ class UserWelcomePage extends React.Component {
           })
         )}
 
-    handleDeleteGameById = (gameId) => {
+    handleDeletePlayerById = (playerid) => {
+      return(
+        fetch(`http://localhost:8080/api/players/${playerid}`, {
+          method: 'DELETE',
+          headers: {
+            'authorization': `bearer ${TokenService.getAuthToken()}`,
+            'Content-type': 'application/json'
+          }
+        })
+          .then(res => {
+            this.setState({players: this.state.players.filter(player=> player.id !== playerid)})
+          })         
+      )}
+
+    handleDeleteGameById = (gameid) => {
         return(
-          fetch(`http://localhost:8080/api/games/${gameId}`, {
+          fetch(`http://localhost:8080/api/games/${gameid}`, {
             method: 'DELETE',
             headers: {
               'authorization': `bearer ${TokenService.getAuthToken()}`,
@@ -98,13 +113,13 @@ class UserWelcomePage extends React.Component {
             }
           })
             .then(res => {
-              this.setState({games: this.state.games.filter(game=> game.id !== gameId)})
+              this.setState({games: this.state.games.filter(game=> game.id !== gameid)})
             })         
         )}
 
     handleDeletePlayerById = (playerId) => {
         return(
-          fetch(`http://localhost:8080/api/players/${playerId}`, {
+          fetch(`http://localhost:8080/api/players/player/${playerId}`, {
             method: 'DELETE',
             headers: {
               'authorization': `bearer ${TokenService.getAuthToken()}`,
@@ -112,7 +127,7 @@ class UserWelcomePage extends React.Component {
             }
           })
               .then(res => {
-                this.setState({players: this.state.notes.filter(player=> player.id !== playerId)})
+                this.setState({players: this.state.players.filter(player=> player.id !== playerId)})
               })         
         )}
 
@@ -180,6 +195,7 @@ class UserWelcomePage extends React.Component {
                     <input />
                     <div>
                         <GamesList games={this.state.games} userId={this.state.userid} handleDeleteGame={this.handleDeleteGameById} />
+                        <CreatePlayerForm handleAddPlayer={this.handleAddPlayer}/>
                         <PlayersList render={false} players={this.state.players} userId={this.state.userid} handleDeletePlayer={this.handleDeletePlayerById} />
                     </div>
                 </main>

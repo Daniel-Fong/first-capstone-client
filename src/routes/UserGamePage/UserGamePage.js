@@ -5,6 +5,7 @@ import config from '../../config'
 
 class UserGamePage extends React.Component {
     state = {
+        allplayers: [],
         players: [],
         game: {},
         error: null
@@ -19,7 +20,34 @@ class UserGamePage extends React.Component {
             .then(game => {
               this.setState({ game: game })
             })
+        this.fetchPlayersByUserId()
+            .then((players) => {
+                this.setState({allplayers: players})
+            })
     }
+
+    handleAddPlayerToGame(gameid, playerid) {
+
+    }
+
+    fetchPlayersByUserId() {
+      return(
+          fetch(`${config.API_ENDPOINT}/players`, {
+              headers: {
+                  'authorization': `bearer ${TokenService.getAuthToken()}`,
+              },
+          })
+            .then(res => {
+              if (res.ok) {
+                return res.json();
+              }
+              return Promise.reject('Error fetching players from server');
+            })
+            .catch(err => {
+              this.setState({error: err})
+            })
+          )
+        }
 
     fetchGameById(gameid) {
       return(
@@ -65,6 +93,8 @@ class UserGamePage extends React.Component {
               <h1>{this.state.game.name}</h1>
               <p>{this.state.game.date_modified}</p>
               <p>{this.state.game.notes}</p>
+              <h2>Add Player</h2>
+              
               <PlayersList render={true} players={this.state.players} gameid={this.props.match.params.game_id} />
             </div>
         )

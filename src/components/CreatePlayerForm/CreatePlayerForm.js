@@ -1,12 +1,13 @@
 import React from 'react'
 
-class CreateGameForm extends React.Component {
+class CreatePlayerForm extends React.Component {
     render() {
         return (
-            <div>
+            <div className='add-player-form'>
+                <h2>Add New Player</h2>
                 <form className='create-game-form' onSubmit={(e) => {
                     e.preventDefault()
-                    this.props.handleAddGame(e)
+                    this.props.handleAddPlayer(e)
                 }}>
                     <label htmlFor='name'>Name</label>
                     <input name='name' required/>
@@ -19,4 +20,4 @@ class CreateGameForm extends React.Component {
     }
 }
 
-export default CreateGameForm;
+export default CreatePlayerForm;
