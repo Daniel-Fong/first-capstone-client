@@ -2,10 +2,11 @@ import React from 'react'
 import TokenService from '../../services/token-service'
 import PlayersList from '../../components/PlayersList/PlayersList'
 import config from '../../config'
+import PlayerOption from '../../components/PlayerOption/PlayerOption'
 
 class UserGamePage extends React.Component {
     state = {
-        allplayers: [],
+        playersNotInGame: [],
         players: [],
         game: {},
         error: null
@@ -20,9 +21,9 @@ class UserGamePage extends React.Component {
             .then(game => {
               this.setState({ game: game })
             })
-        this.fetchPlayersByUserId()
+        this.fetchPlayersNotInGame(this.props.match.params.game_id)
             .then((players) => {
-                this.setState({allplayers: players})
+                this.setState({playersNotInGame: players})
             })
     }
 
@@ -30,9 +31,9 @@ class UserGamePage extends React.Component {
 
     }
 
-    fetchPlayersByUserId() {
+    fetchPlayersNotInGame() {
       return(
-          fetch(`${config.API_ENDPOINT}/players`, {
+          fetch(`${config.API_ENDPOINT}/players/list/:gameid`, {
               headers: {
                   'authorization': `bearer ${TokenService.getAuthToken()}`,
               },
@@ -94,7 +95,13 @@ class UserGamePage extends React.Component {
               <p>{this.state.game.date_modified}</p>
               <p>{this.state.game.notes}</p>
               <h2>Add Player</h2>
-              
+              <select onChange={(e) => {
+                        e.preventDefault();
+                        this.props.handleAddPlayerToGame(e.target.value)}
+                    }
+                  >
+                          { this.state.players.map((player) => <PlayerOption key={player.id} player={player}/> )}
+                  </select>
               <PlayersList render={true} players={this.state.players} gameid={this.props.match.params.game_id} />
             </div>
         )
