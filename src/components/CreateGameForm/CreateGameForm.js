@@ -1,4 +1,5 @@
 import React from 'react'
+import './CreateGameForm.css'
 
 class CreateGameForm extends React.Component {
     render() {

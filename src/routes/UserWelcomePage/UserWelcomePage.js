@@ -6,6 +6,7 @@ import PlayersList from '../../components/PlayersList/PlayersList'
 import { Link } from 'react-router-dom'
 import CreateGameForm from '../../components/CreateGameForm/CreateGameForm'
 import CreatePlayerForm from '../../components/CreatePlayerForm/CreatePlayerForm'
+import './UserWelcomePage.css'
 
 class UserWelcomePage extends React.Component {
     state = {
@@ -173,29 +174,25 @@ class UserWelcomePage extends React.Component {
         return (
             <div className='user-welcome-div'>
                 <header>
-                    <ul className='navbar'>
-                        <Link to='/users'>
-                        <li>Home</li>
-                        </Link>
-                        <li>My Games</li>
-                        <li><button>Create New Game</button></li>
-                        <CreateGameForm handleAddGame={this.handleAddGame} />
-                    </ul>
-                    <h2>Welcome User</h2>
+                    <h1>Welcome Back!</h1>
                 </header>
-                <main>
-                    <button>Start a New Game</button>
-                    <h3>My Saved Games</h3>
-                    <label>Sort By</label>
+                <main className='welcome-page-main'>
+                    <div className='games-div'>
+                    <h2>Start a New Game</h2>
+                      <CreateGameForm handleAddGame={this.handleAddGame} />
+                    <h2>My Saved Games</h2>
+                    {/* <label>Sort By</label>
                     <select>
                         <option>Date Old to New</option>
                         <option>Date New to Old</option>
                     </select>
                     <label>Search</label>
-                    <input />
-                    <div>
+                    <input /> */}
                         <GamesList games={this.state.games} userId={this.state.userid} handleDeleteGame={this.handleDeleteGameById} />
+                    </div>
+                    <div className='players-div'>
                         <CreatePlayerForm handleAddPlayer={this.handleAddPlayer}/>
+                        <h2>My Players</h2>
                         <PlayersList render={false} players={this.state.players} userId={this.state.userid} handleDeletePlayer={this.handleDeletePlayerById} />
                     </div>
                 </main>

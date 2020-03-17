@@ -11,9 +11,9 @@ class LandingPage extends React.Component {
                     <Link to='/login'>
                         <button className='sign-in-button'>Sign In</button>
                     </Link>
-                    <Link to='/register'>
+                    {/* <Link to='/register'>
                         <button className='sign-up-button'>Sign Up</button>
-                    </Link>
+                    </Link> */}
                 </header>
                 <section className='about'>
                     <h2>About</h2>

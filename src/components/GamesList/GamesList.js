@@ -1,5 +1,6 @@
 import React from 'react'
 import Game from './Game/Game'
+import './GamesList.css'
 
 class GamesList extends React.Component {
     render() {

@@ -1,0 +1,12 @@
+.games-ul {
+    margin-left: -2.5em;
+    color: black;
+}
+
+.games-ul a {
+    text-decoration: none;
+}
+
+.games-ul a:visited {
+    color: black;
+}
