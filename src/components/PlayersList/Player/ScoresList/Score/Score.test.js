@@ -1,11 +1,11 @@
+import Score from './Score'
 import React from 'react';
-import App from './App';
 import ReactDOM from 'react-dom';
 
-describe('<App />', () => {
+describe('<Score />', () => {
     it ('renders without crashing', () => {
         const div = document.createElement('div');
-        ReactDOM.render(<App />, div);
+        ReactDOM.render(<Score score={{score: 5, note: 'blah'}}/>, div);
         ReactDOM.unmountComponentAtNode(div);
     })
 })

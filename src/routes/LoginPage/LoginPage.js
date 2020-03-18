@@ -24,7 +24,7 @@ class LoginPage extends React.Component {
                 <h3>Sign In</h3>
                 <LoginForm onLoginSuccess={this.handleLoginSuccess} />
                 <Link to='/'>
-                    <button>Cancel</button>
+                    <button className='cancel-login-button'>Cancel</button>
                 </Link>
             </div>
         )

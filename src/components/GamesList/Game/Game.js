@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import { BsTrash } from 'react-icons/bs'
+import { IconContext } from 'react-icons'
 import './Game.css'
 
 class Game extends React.Component {
@@ -11,10 +12,12 @@ class Game extends React.Component {
                 <h3>{this.props.game.name}</h3>
                 <p className='game-notes-p'>{this.props.game.notes}</p>
                 <p className='date-modified-p'>{this.props.game.date_modified}</p>
-                <button className='game-delete-button' type='delete' onClick={(e) => {
-                    e.preventDefault()
-                    this.props.handleDeleteGame(this.props.game.id)
-                }}>Delete Game</button>
+                <IconContext.Provider value={{ size: 20, className: 'react-icon'}} >
+                    <button className='game-delete-button' type='delete' onClick={(e) => {
+                        e.preventDefault()
+                        this.props.handleDeleteGame(this.props.game.id)
+                    }}><BsTrash /></button>
+                </IconContext.Provider>
             </li>
             </Link>
         )

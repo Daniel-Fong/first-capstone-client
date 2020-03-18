@@ -1,11 +1,11 @@
+import PlayerOption from './PlayerOption'
 import React from 'react';
-import App from './App';
 import ReactDOM from 'react-dom';
 
-describe('<App />', () => {
+describe('<PlayerOption />', () => {
     it ('renders without crashing', () => {
         const div = document.createElement('div');
-        ReactDOM.render(<App />, div);
+        ReactDOM.render(<PlayerOption player={{id:1, name:'daniel'}}/>, div);
         ReactDOM.unmountComponentAtNode(div);
     })
 })

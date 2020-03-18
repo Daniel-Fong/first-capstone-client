@@ -1,11 +1,11 @@
+import CreateGameForm from './CreateGameForm'
 import React from 'react';
-import App from './App';
 import ReactDOM from 'react-dom';
 
-describe('<App />', () => {
+describe('<CreateGameForm />', () => {
     it ('renders without crashing', () => {
         const div = document.createElement('div');
-        ReactDOM.render(<App />, div);
+        ReactDOM.render(<CreateGameForm />, div);
         ReactDOM.unmountComponentAtNode(div);
     })
 })

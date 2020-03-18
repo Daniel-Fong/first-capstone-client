@@ -187,11 +187,16 @@ class UserGamePage extends React.Component {
     render() {
         return(
             <div className='user-game-page-div'>
-              <h1>{this.state.game.name}</h1>
-              <p>{this.state.game.date_modified}</p>
-              <p>{this.state.game.notes}</p>
+              <header>
+                <h1>{this.state.game.name}</h1>
+                <p>{this.state.game.date_modified}</p>
+                <p>{this.state.game.notes}</p>
+                <button className='back-button' type='submit' onClick={() => {
+                  this.props.history.goBack()
+                }}>Return to Home Page</button>
+              </header>
               <form className='add-player-to-game-form'>
-              <h2>Add Player</h2>
+                <h2>Add Player</h2>
                 <select defaultValue='' onChange={(e) => {
                         e.preventDefault();
                         this.handleAddPlayerToGame(e.target.value)
@@ -200,7 +205,6 @@ class UserGamePage extends React.Component {
                         <option value='none'>Select a Player to Add</option>
                           { this.state.playersForSelect.map((player) => <PlayerOption key={player.id} player={player}/> )}
                 </select>
-                {/* <button className='add-player-to-game-button' typ='submit'>Add</button> */}
               </form>
               <PlayersList state={this.state} render={true} players={this.state.players} gameid={this.props.match.params.game_id} handleDeletePIG={this.handleDeletePIG} />
             </div>

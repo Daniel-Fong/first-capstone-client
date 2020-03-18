@@ -3,7 +3,7 @@ import GamesList from '../../components/GamesList/GamesList'
 import config from '../../config'
 import TokenService from '../../services/token-service'
 import PlayersList from '../../components/PlayersList/PlayersList'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import CreateGameForm from '../../components/CreateGameForm/CreateGameForm'
 import CreatePlayerForm from '../../components/CreatePlayerForm/CreatePlayerForm'
 import './UserWelcomePage.css'
@@ -199,10 +199,15 @@ class UserWelcomePage extends React.Component {
             <div className='user-welcome-div'>
                 <header>
                     <h1>Welcome {this.state.userName}!</h1>
+                    <Link to='/'>
+                    <button className='logout-button' type='submit' onClick={(e) => {
+                      TokenService.clearAuthToken()
+                    }}>Logout</button>
+                    </Link>
                 </header>
                 <main className='welcome-page-main'>
                     <div className='games-div'>
-                    <h2>Start a New Game</h2>
+                    <h2>Create a New Game</h2>
                       <CreateGameForm handleAddGame={this.handleAddGame} />
                     <h2>{this.state.userName}'s Saved Games</h2>
                     {/* <label>Sort By</label>

@@ -1,6 +1,8 @@
 import React from 'react'
 import ScoresList from './ScoresList/ScoresList'
 import {v4 as uuidv4} from 'uuid'
+import { BsTrash } from 'react-icons/bs'
+import { IconContext } from 'react-icons'
 
 class Player extends React.Component {
     render() {
@@ -17,10 +19,12 @@ class Player extends React.Component {
                     this.props.handleDeletePIG(this.props.player.id)
                 }}>Remove from Game</button>
             }
-            return <button type='delete' className='delete-player-button' onClick={(e) => {
-                e.preventDefault()
-                this.props.handleDeletePlayer(this.props.player.id)
-            }}>Delete Player</button>
+            return <IconContext.Provider value={{ size: 20, className: 'react-icon'}} >
+                        <button type='delete' className='delete-player-button' onClick={(e) => {
+                        e.preventDefault()
+                        this.props.handleDeletePlayer(this.props.player.id)
+                        }}><BsTrash /></button>
+                    </IconContext.Provider>
         }
         return(
             <li className='player-li'>
