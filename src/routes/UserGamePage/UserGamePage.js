@@ -5,6 +5,12 @@ import config from '../../config'
 import PlayerOption from '../../components/PlayerOption/PlayerOption'
 
 class UserGamePage extends React.Component {
+  static defaultProps = {
+    location: {},
+    history: {
+        push: () => {},
+    },
+}
     state = {
         playersForSelect: [],
         players: [],
@@ -24,14 +30,36 @@ class UserGamePage extends React.Component {
             })
         this.fetchPlayersByUserId()
             .then(players => {
-              console.log(players)
               this.setState({playersForSelect: players})
+            })
+        this.fetchPIG(this.props.match.params.game_id)
+            .then(pigs => {
+              this.setState({pig: pigs})
             })
         // this.fetchPlayersNotInGame(this.props.match.params.game_id)
         //     .then((players) => {
         //         this.setState({playersNotInGame: players})
         //     })
     }
+
+    fetchPIG = ( gameid ) => {
+      return(
+        fetch(`${config.API_ENDPOINT}/players/pig/${gameid}`, {
+          headers: {
+            'authorization': `bearer ${TokenService.getAuthToken()}`,
+          }
+        })
+        .then(res => {
+          if (res.ok) {
+            return res.json();
+          }
+          return Promise.reject('Error fetching players from server')
+        })
+        .catch(err => {
+          this.setState({error: err})
+        })
+    )
+  } 
 
     handleAddPlayerToGame = ( playerid ) => {
       const gameid = this.state.game.id
@@ -51,8 +79,12 @@ class UserGamePage extends React.Component {
         return res.json()
       })
       .then(playeringame => {
-        this.setState({pig: [playeringame]})
+        this.setState({pig: [...this.state.pig, playeringame]})
+        return this.fetchPlayersByGameId(gameid)
       })
+        .then(players => {
+          this.setState({players: players})
+        })
       .catch(error => {
         console.error({ error })
       })
@@ -69,7 +101,11 @@ class UserGamePage extends React.Component {
         })
           .then(res => {
             this.setState({pig: this.state.pig.filter(pig=> pig.playerid !== playerid)})
-          })         
+            return this.fetchPlayersByGameId(this.state.game.id)
+          })
+            .then(players => {
+              this.setState({players: players})
+            })     
       )}
 
     fetchPlayersByUserId() {
@@ -154,18 +190,19 @@ class UserGamePage extends React.Component {
               <h1>{this.state.game.name}</h1>
               <p>{this.state.game.date_modified}</p>
               <p>{this.state.game.notes}</p>
-              <h2>Add Player</h2>
               <form className='add-player-to-game-form'>
-                <select onChange={(e) => {
+              <h2>Add Player</h2>
+                <select defaultValue='' onChange={(e) => {
                         e.preventDefault();
                         this.handleAddPlayerToGame(e.target.value)
-                        console.log(this.state.pig)}
+                      }
                     }>
+                        <option value='none'>Select a Player to Add</option>
                           { this.state.playersForSelect.map((player) => <PlayerOption key={player.id} player={player}/> )}
                 </select>
-                <button className='add-player-to-game-button' typ='submit'>Add</button>
+                {/* <button className='add-player-to-game-button' typ='submit'>Add</button> */}
               </form>
-              <PlayersList render={true} players={this.state.players} gameid={this.props.match.params.game_id} handleDeletePIG={this.handleDeletePIG} />
+              <PlayersList state={this.state} render={true} players={this.state.players} gameid={this.props.match.params.game_id} handleDeletePIG={this.handleDeletePIG} />
             </div>
         )
     }

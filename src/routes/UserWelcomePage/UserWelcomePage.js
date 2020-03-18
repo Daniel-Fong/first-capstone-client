@@ -3,7 +3,7 @@ import GamesList from '../../components/GamesList/GamesList'
 import config from '../../config'
 import TokenService from '../../services/token-service'
 import PlayersList from '../../components/PlayersList/PlayersList'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import CreateGameForm from '../../components/CreateGameForm/CreateGameForm'
 import CreatePlayerForm from '../../components/CreatePlayerForm/CreatePlayerForm'
 import './UserWelcomePage.css'
@@ -12,6 +12,7 @@ class UserWelcomePage extends React.Component {
     state = {
         games: [],
         players: [],
+        userName: null,
         error: null,
     }
 
@@ -23,13 +24,36 @@ class UserWelcomePage extends React.Component {
         .catch(error => {
             console.error({error})
         })
-        this.fetchPlayersByUserId()
+       this.fetchPlayersByUserId()
         .then((players) => {
             this.setState({players})
         })
         .catch(error => {
             console.error({error})
         })
+      this.fetchUserById()
+        .then(user => {
+          this.setState({userName: user[0].name})
+        })
+    }
+
+    fetchUserById = () => {
+      return (
+        fetch(`${config.API_ENDPOINT}/users/user`, {
+          headers: {
+              'authorization': `bearer ${TokenService.getAuthToken()}`,
+          },
+      })
+        .then(res => {
+          if (res.ok) {
+            return res.json();
+          }
+          return Promise.reject('Error fetching user from server');
+        })
+        .catch(err => {
+          this.setState({error: err})
+        })
+      )
     }
 
     handleAddGame = (e) => {
@@ -174,13 +198,13 @@ class UserWelcomePage extends React.Component {
         return (
             <div className='user-welcome-div'>
                 <header>
-                    <h1>Welcome Back!</h1>
+                    <h1>Welcome {this.state.userName}!</h1>
                 </header>
                 <main className='welcome-page-main'>
                     <div className='games-div'>
                     <h2>Start a New Game</h2>
                       <CreateGameForm handleAddGame={this.handleAddGame} />
-                    <h2>My Saved Games</h2>
+                    <h2>{this.state.userName}'s Saved Games</h2>
                     {/* <label>Sort By</label>
                     <select>
                         <option>Date Old to New</option>
@@ -192,7 +216,7 @@ class UserWelcomePage extends React.Component {
                     </div>
                     <div className='players-div'>
                         <CreatePlayerForm handleAddPlayer={this.handleAddPlayer}/>
-                        <h2>My Players</h2>
+                        <h2>{this.state.userName}'s Players</h2>
                         <PlayersList render={false} players={this.state.players} userId={this.state.userid} handleDeletePlayer={this.handleDeletePlayerById} />
                     </div>
                 </main>

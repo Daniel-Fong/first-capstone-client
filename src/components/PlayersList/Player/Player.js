@@ -15,7 +15,7 @@ class Player extends React.Component {
                 return <button className='delete-player-from-game-button' onClick={(e) => {
                     e.preventDefault()
                     this.props.handleDeletePIG(this.props.player.id)
-                }}>Delete</button>
+                }}>Remove from Game</button>
             }
             return <button type='delete' className='delete-player-button' onClick={(e) => {
                 e.preventDefault()

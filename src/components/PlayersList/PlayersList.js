@@ -8,7 +8,7 @@ class PlayersList extends React.Component {
         const renderPlayersList = () => {
             if (render) {
                 return <ul className='players-ul'>
-                            {this.props.players.map(player => <Player render={this.props.render} key={player.id} player={player} userId={this.props.userId} gameid={this.props.gameid} handleDeletePlayer={this.props.handleDeletePlayer} handleDeletePIG={this.props.handleDeletePIG}/>)}
+                            {this.props.players.map(player => <Player state={this.props.state} render={this.props.render} key={player.id} player={player} userId={this.props.userId} gameid={this.props.gameid} handleDeletePlayer={this.props.handleDeletePlayer} handleDeletePIG={this.props.handleDeletePIG}/>)}
                        </ul>
             }
             return <ul className='players-ul-welcome'>
