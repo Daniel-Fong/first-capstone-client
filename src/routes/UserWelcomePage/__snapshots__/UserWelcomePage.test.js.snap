@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UserWelcomePage /> renders the ui as expected 1`] = `
+<div
+  className="user-welcome-div"
+>
+  <header>
+    <h1>
+      Welcome 
+      !
+    </h1>
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      <button
+        className="logout-button"
+        onClick={[Function]}
+        type="submit"
+      >
+        Logout
+      </button>
+    </a>
+  </header>
+  <main
+    className="welcome-page-main"
+  >
+    <div
+      className="games-div"
+    >
+      <h2>
+        Create a New Game
+      </h2>
+      <div>
+        <form
+          className="create-game-form"
+          onSubmit={[Function]}
+        >
+          <label
+            htmlFor="name"
+          >
+            Name
+          </label>
+          <input
+            name="name"
+            required={true}
+          />
+          <label
+            htmlFor="notes"
+          >
+            Notes
+          </label>
+          <input
+            name="notes"
+          />
+          <button
+            className="submit"
+            type="submit"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+      <h2>
+        's Saved Games
+      </h2>
+      <ul
+        className="games-ul"
+      />
+    </div>
+    <div
+      className="players-div"
+    >
+      <div
+        className="add-player-form"
+      >
+        <h2>
+          Add New Player
+        </h2>
+        <form
+          className="create-game-form"
+          onSubmit={[Function]}
+        >
+          <label
+            htmlFor="name"
+          >
+            Name
+          </label>
+          <input
+            name="name"
+            required={true}
+          />
+          <label
+            htmlFor="notes"
+          >
+            Notes
+          </label>
+          <input
+            name="notes"
+          />
+          <button
+            className="submit"
+            type="submit"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+      <h2>
+        's Players
+      </h2>
+      <div
+        className="players-list-div"
+      >
+        <ul
+          className="players-ul-welcome"
+        />
+      </div>
+    </div>
+  </main>
+</div>
+`;

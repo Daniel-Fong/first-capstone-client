@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UserGamePage /> renders the ui as expected 1`] = `
+<div
+  className="user-game-page-div"
+>
+  <header>
+    <h1 />
+    <p />
+    <p />
+    <button
+      className="back-button"
+      onClick={[Function]}
+      type="submit"
+    >
+      Return to Home Page
+    </button>
+  </header>
+  <form
+    className="add-player-to-game-form"
+  >
+    <h2>
+      Add Player
+    </h2>
+    <select
+      defaultValue=""
+      onChange={[Function]}
+    >
+      <option
+        value="none"
+      >
+        Select a Player to Add
+      </option>
+    </select>
+  </form>
+  <div
+    className="players-list-div"
+  >
+    <ul
+      className="players-ul"
+    />
+  </div>
+</div>
+`;

@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ScoresList /> renders the ui as expected 1`] = `
+<div
+  className="scores-list-div"
+>
+  <h3>
+    Score(s)
+  </h3>
+  <ul
+    className="scores-list-ul"
+  />
+  <form
+    className="add-score-form"
+    onSubmit={[Function]}
+  >
+    <h2
+      className="add-score-h2"
+    >
+      Add New Score or Note
+    </h2>
+    <label
+      htmlFor="score"
+    >
+      Score
+    </label>
+    <input
+      name="score"
+      onChange={[Function]}
+      value=""
+    />
+    <label
+      htmlFor="note"
+    >
+      Note
+    </label>
+    <input
+      name="note"
+      onChange={[Function]}
+      value=""
+    />
+    <button
+      className="add-score-button"
+      type="submit"
+    >
+      Add
+    </button>
+  </form>
+</div>
+`;
