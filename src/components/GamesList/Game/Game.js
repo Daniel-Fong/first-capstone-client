@@ -13,7 +13,7 @@ class Game extends React.Component {
                 <p className='game-notes-p'>{this.props.game.notes}</p>
                 <p className='date-modified-p'>{this.props.game.date_modified}</p>
                 <IconContext.Provider value={{ size: 20, className: 'react-icon'}} >
-                    <button className='game-delete-button' type='delete' onClick={(e) => {
+                    <button className='game-delete-button' type='delete' title='Delete' alt='delete' onClick={(e) => {
                         e.preventDefault()
                         this.props.handleDeleteGame(this.props.game.id)
                     }}><BsTrash /></button>

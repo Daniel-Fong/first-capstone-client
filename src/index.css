@@ -18,9 +18,11 @@ ul {
 
 button {
   border-radius: .5em;
+  box-shadow: 2px 2px 2px black;
+  transition-duration: .5s;
 }
 
 button:hover {
   cursor: pointer;
-  box-shadow: 2px 2px 2px black;
+  transform: translate(.2em, -.2em);
 }

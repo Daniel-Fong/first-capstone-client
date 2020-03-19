@@ -20,7 +20,7 @@ class Player extends React.Component {
                 }}>Remove from Game</button>
             }
             return <IconContext.Provider value={{ size: 20, className: 'react-icon'}} >
-                        <button type='delete' className='delete-player-button' onClick={(e) => {
+                        <button type='delete' className='delete-player-button' title='Delete' alt='delete' onClick={(e) => {
                         e.preventDefault()
                         this.props.handleDeletePlayer(this.props.player.id)
                         }}><BsTrash /></button>

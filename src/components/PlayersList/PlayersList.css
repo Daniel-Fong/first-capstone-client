@@ -8,10 +8,8 @@
     background-color:  rgb(236, 230, 197);
     padding-bottom: .5em;
     color: black;
-}
-
-.players-ul-welcome li {
     width: 100%;
     margin-left: -1.3em;
     border-radius: 3em;
+    box-shadow: 3px 3px 3px black;
 }

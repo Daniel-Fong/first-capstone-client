@@ -10,7 +10,7 @@ class Score extends React.Component {
                 <p>{this.props.score.score}</p>
                 <p>{this.props.score.note}</p>
                 <IconContext.Provider value={{ size: 20, className: 'react-icon'}} >
-                <button className='delete-score-button' type='delete' onClick={(e) => {
+                <button className='delete-score-button' type='delete' title='Delete' alt='delete' onClick={(e) => {
                     e.preventDefault()
                     this.props.handleDeleteScore(e, this.props.score.id)
                 }}><BsTrash /></button>
