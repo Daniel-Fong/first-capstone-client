@@ -44,7 +44,7 @@ class UserGamePage extends React.Component {
 
     fetchPIG = ( gameid ) => {
       return(
-        fetch(`${config.API_ENDPOINT}/players/pig/${gameid}`, {
+        fetch(`${config.API_ENDPOINT}/pig/${gameid}`, {
           headers: {
             'authorization': `bearer ${TokenService.getAuthToken()}`,
           }
@@ -65,7 +65,7 @@ class UserGamePage extends React.Component {
       const gameid = this.state.game.id
       const newPlayerInGame = { playerid, gameid }
       return(
-        fetch(`${config.API_ENDPOINT}/players/pig`, {
+        fetch(`${config.API_ENDPOINT}/pig`, {
           method: 'POST',
           headers: {
             'authorization': `bearer ${TokenService.getAuthToken()}`,
@@ -92,7 +92,7 @@ class UserGamePage extends React.Component {
 
     handleDeletePIG = (playerid) => {
       return(
-        fetch(`http://localhost:8080/api/players/pig/${playerid}/${this.state.game.id}`, {
+        fetch(`${config.API_ENDPOINT}/pig/${this.state.game.id}/${playerid}`, {
           method: 'DELETE',
           headers: {
             'authorization': `bearer ${TokenService.getAuthToken()}`,
