@@ -14,6 +14,6 @@ For this client, the code has been divided into 3 main folders in the src direct
   3. services: this contains auth and token services. 
   
   ![Landing Page](https://i.imgur.com/FrQCxHL.png)
-  ![Login Page]()
-  ![User Welcome Page]()
-  ![Game Page]()
+  ![Login Page](https://i.imgur.com/2aMMWkO.png)
+  ![User Welcome Page](https://i.imgur.com/B0JqiZQ.png)
+  ![Game Page](https://i.imgur.com/NOOT5KD.png)
