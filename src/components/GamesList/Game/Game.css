@@ -1,10 +1,14 @@
 .game-li {
-    background-color: rgb(157, 111, 168);
+    background-color: #9A9BC7;
     padding-bottom: .5em;
-    border-radius: 3em;
+    border-radius: 1em;
     box-shadow: 3px 3px 3px black;
 }
 
 .game-li:hover {
     box-shadow: 3px 3px 3px whitesmoke;
+}
+
+.game-li h3 {
+    font-family: 'Federant', cursive;
 }

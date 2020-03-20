@@ -7,16 +7,18 @@
 }
 
 .scores-list-ul {
-    width: 100%;
+    width: 85%;
 }
 
 .player-li {
     width: 25%;
+    margin-right: 1em;
 }
 
 .score-li {
-    margin-left: -4.2em;
-    margin-right: 1.2em;
+    margin-left: -2em;
+    padding-top: .5em;
+    padding-bottom: .5em;
 }
 
 .players-ul {
@@ -25,8 +27,21 @@
 
 .add-score-form {
     text-align: left;
+    margin-left: 1em;
 }
 
 .add-score-form input {
     width: 8em;
+}
+
+@media screen and (max-width: 700px) {
+    .scores-list-ul {
+        width: 90%;
+        margin-left: -20%;
+    }
+
+    .add-score-form {
+        text-align: left;
+        margin-left: 0;
+    }
 }

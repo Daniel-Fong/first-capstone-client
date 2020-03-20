@@ -2,14 +2,22 @@
     width: 100%;
     display: inline-flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .players-ul-welcome li {
-    background-color:  rgb(236, 230, 197);
+    background-color:  #9A9BC7;
     padding-bottom: .5em;
     color: black;
     width: 100%;
     margin-left: -1.3em;
-    border-radius: 3em;
+    border-radius: 2em;
     box-shadow: 3px 3px 3px black;
+}
+
+.player-info-section {
+    background-color: rgb(142, 96, 146);
+    border-radius: .5em;
+    padding-bottom: .5em;
+    margin-bottom: -.5em;
 }

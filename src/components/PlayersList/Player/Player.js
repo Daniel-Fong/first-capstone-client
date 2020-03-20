@@ -28,9 +28,11 @@ class Player extends React.Component {
         }
         return(
             <li className='player-li'>
+                <section className='player-info-section'>
                 <h3>{this.props.player.name}</h3>
                 <p className='player-notes-p'>{this.props.player.notes}</p>
                 {renderDeleteButton()}
+                </section>
                 {renderScoresList()}
             </li>
         )

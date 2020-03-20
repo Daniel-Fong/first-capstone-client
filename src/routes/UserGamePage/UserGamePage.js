@@ -3,6 +3,7 @@ import TokenService from '../../services/token-service'
 import PlayersList from '../../components/PlayersList/PlayersList'
 import config from '../../config'
 import PlayerOption from '../../components/PlayerOption/PlayerOption'
+import './UserGamePage.css'
 
 class UserGamePage extends React.Component {
   static defaultProps = {

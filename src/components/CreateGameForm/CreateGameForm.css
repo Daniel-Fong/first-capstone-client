@@ -1,5 +1,6 @@
-.create-game-form input {
+.create-game-form input, .create-player-form input {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: .5em;
 }

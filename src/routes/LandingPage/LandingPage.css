@@ -1,6 +1,14 @@
+@import url("https://fonts.googleapis.com/css?family=Faster+One&display=swap");
+
 .landing-header {
     border: black 1px solid;
     padding-bottom: 2em;
+    background-color: rgb(47, 52, 56);
+}
+
+.landing-header h1 {
+    font-family: 'Faster One', cursive;
+    font-size: 4em;
 }
 
 .left-align {
@@ -12,8 +20,8 @@
     margin-right: 0em;
     padding-left: 20%;
     padding-right: 20%;
-    background-color: rgb(157, 111, 168);
-    color: black;
+    background-color:rgb(47, 52, 56);
+    color: white;
     padding-bottom: 2em;
     padding-top: 1em;
     border: black 1px solid;
@@ -22,7 +30,7 @@
 .about {
     padding-left: 30%;
     padding-right: 30%;
-    background-color: rgb(236, 230, 197);
+    background-color:#9A9BC7;
     color: black;
     padding-bottom: 1em;
     padding-top: .1em;
@@ -31,11 +39,23 @@
 }
 
 .instructions-ul .sample-user-section {
-    background-color: rgb(236, 230, 197);
+    background-color: #9A9BC7;
+    color: black;
     width: 15em;
     margin-left: auto;
     margin-right: auto;
     border-radius: 1em;
     padding-top: .1em;
     padding-bottom: .5em;
+}
+
+@media screen and (max-width: 600px) {
+    .landing-header h1 {
+        font-size: 3em;
+    }
+
+    .about {
+        padding-left: 20%;
+        padding-right: 20%;
+    }
 }

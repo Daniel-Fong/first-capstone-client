@@ -13,6 +13,12 @@
 }
 
 body {
-    background-color: #15334D;
+    background-color:rgb(47, 52, 56);
     color: white;
+}
+
+@media screen and (max-width: 600px) {
+    .welcome-page-main input {
+        width: 10em;
+    }
 }

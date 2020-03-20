@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "alias": "pengin-san-firstCapstone",
+    "name": "first-capstone",
+    "routes": [
+        {
+          "src": "^/static/(.*)",
+          "dest": "/static/$1"
+        },
+        {
+          "src": ".*",
+          "dest": "/index.html"
+        }
+      ]
+  }
