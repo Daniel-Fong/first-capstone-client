@@ -6,6 +6,8 @@ Snapshot keeps track of and saves scores and state for physical games like board
 
 Link to deployed version: https://first-capstone.pengin-san.now.sh/
 
+Link to server code: https://github.com/Daniel-Fong/first-capstone-server/
+
 Tech Stack: Reactjs, CSS3, NODE.js, SQL, PostgresQL
 
 For this client, the code has been divided into 3 main folders in the src directory:
