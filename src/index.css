@@ -28,7 +28,3 @@ button:hover {
   color: white;
   background-color: black;
 }
-
-button:active {
-  transform: translate(-.2em, .2em);
-}
