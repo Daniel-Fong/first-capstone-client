@@ -4,6 +4,10 @@
     justify-content: space-around;
 }
 
+.user-welcome-div h1 {
+    font-family: cursive;
+}
+
 .games-div {
     width: 40%;
 }

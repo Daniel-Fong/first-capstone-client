@@ -64,7 +64,7 @@ class UserWelcomePage extends React.Component {
             notes: notes
         })
         return(
-          fetch(`http://localhost:8080/api/games`, {
+          fetch(`${config.API_ENDPOINT}/games`, {
             method: 'POST',
             headers: {
               'authorization': `bearer ${TokenService.getAuthToken()}`,
@@ -93,7 +93,7 @@ class UserWelcomePage extends React.Component {
             notes: notes
         })
         return(
-          fetch(`http://localhost:8080/api/players`, {
+          fetch(`${config.API_ENDPOINT}/players`, {
             method: 'POST',
             headers: {
               'authorization': `bearer ${TokenService.getAuthToken()}`,
@@ -116,7 +116,7 @@ class UserWelcomePage extends React.Component {
 
     handleDeletePlayerById = (playerid) => {
       return(
-        fetch(`http://localhost:8080/api/players/${playerid}`, {
+        fetch(`${config.API_ENDPOINT}/players/${playerid}`, {
           method: 'DELETE',
           headers: {
             'authorization': `bearer ${TokenService.getAuthToken()}`,
@@ -130,7 +130,7 @@ class UserWelcomePage extends React.Component {
 
     handleDeleteGameById = (gameid) => {
         return(
-          fetch(`http://localhost:8080/api/games/${gameid}`, {
+          fetch(`${config.API_ENDPOINT}/games/${gameid}`, {
             method: 'DELETE',
             headers: {
               'authorization': `bearer ${TokenService.getAuthToken()}`,
@@ -144,7 +144,7 @@ class UserWelcomePage extends React.Component {
 
     handleDeletePlayerById = (playerId) => {
         return(
-          fetch(`http://localhost:8080/api/players/player/${playerId}`, {
+          fetch(`${config.API_ENDPOINT}/players/player/${playerId}`, {
             method: 'DELETE',
             headers: {
               'authorization': `bearer ${TokenService.getAuthToken()}`,
