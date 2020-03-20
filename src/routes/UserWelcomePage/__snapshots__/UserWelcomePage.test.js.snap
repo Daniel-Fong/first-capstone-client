@@ -43,7 +43,9 @@ exports[`<UserWelcomePage /> renders the ui as expected 1`] = `
           </label>
           <input
             name="name"
+            onChange={[Function]}
             required={true}
+            value=""
           />
           <label
             htmlFor="notes"
@@ -52,6 +54,8 @@ exports[`<UserWelcomePage /> renders the ui as expected 1`] = `
           </label>
           <input
             name="notes"
+            onChange={[Function]}
+            value=""
           />
           <button
             className="submit"
@@ -88,7 +92,9 @@ exports[`<UserWelcomePage /> renders the ui as expected 1`] = `
           </label>
           <input
             name="name"
+            onChange={[Function]}
             required={true}
+            value=""
           />
           <label
             htmlFor="notes"
@@ -97,6 +103,8 @@ exports[`<UserWelcomePage /> renders the ui as expected 1`] = `
           </label>
           <input
             name="notes"
+            onChange={[Function]}
+            value=""
           />
           <button
             className="submit"

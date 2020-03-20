@@ -3,10 +3,12 @@
     padding-bottom: .5em;
     border-radius: 1em;
     box-shadow: 3px 3px 3px black;
+    transition-duration: .5s;
 }
 
 .game-li:hover {
     box-shadow: 3px 3px 3px whitesmoke;
+    transform: translate(0px, -5px);
 }
 
 .game-li h3 {
