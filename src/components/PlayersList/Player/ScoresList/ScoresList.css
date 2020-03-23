@@ -37,8 +37,8 @@
 @media screen and (min-width: 700px) {
     .scores-list-ul {
         width: 85%;
-        margin-left: 1em;
-        margin-right: -1em;
+        margin-left: -.1em;
+        margin-right: .1em;
     }
 
     .add-score-form {
