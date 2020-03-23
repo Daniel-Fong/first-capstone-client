@@ -1,7 +1,6 @@
 {
     "version": 2,
-    "alias": "pengin-san-firstCapstone",
-    "name": "first-capstone",
+    "name": "Snapshot",
     "routes": [
         {
           "src": "^/static/(.*)",
