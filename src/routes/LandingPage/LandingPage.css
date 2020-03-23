@@ -6,6 +6,11 @@
     background-color: rgb(47, 52, 56);
 }
 
+.landing-header p {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
 .landing-header h1 {
     font-family: 'Faster One', cursive;
     font-size: 3em;
