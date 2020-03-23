@@ -2,13 +2,7 @@
     "version": 2,
     "name": "Snapshot",
     "routes": [
-        {
-          "src": "^/static/(.*)",
-          "dest": "/static/$1"
-        },
-        {
-          "src": ".*",
-          "dest": "/index.html"
-        }
-      ]
+      { "handle": "filesystem" },
+      { "src": "/.*", "dest": "/index.html" }
+  ]
   }
