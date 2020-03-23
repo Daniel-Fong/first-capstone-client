@@ -21,8 +21,12 @@ body {
     color: white;
 }
 
-@media screen and (max-width: 600px) {
+.welcome-page-main input {
+    width: 10em;
+}
+
+@media screen and (min-width: 600px) {
     .welcome-page-main input {
-        width: 10em;
+        width: 15em;
     }
 }

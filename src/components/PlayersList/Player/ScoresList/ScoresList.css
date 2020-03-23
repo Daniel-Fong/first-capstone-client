@@ -7,7 +7,8 @@
 }
 
 .scores-list-ul {
-    width: 85%;
+    width: 90%;
+    margin-left: -20%;
 }
 
 .player-li {
@@ -27,21 +28,19 @@
 
 .add-score-form {
     text-align: left;
-    margin-left: 1em;
+    margin-left: 0;
 }
 
 .add-score-form input {
     width: 8em;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (min-width: 700px) {
     .scores-list-ul {
-        width: 90%;
-        margin-left: -20%;
+        width: 85%;
     }
 
     .add-score-form {
-        text-align: left;
-        margin-left: 0;
+        margin-left: 1em;
     }
 }
